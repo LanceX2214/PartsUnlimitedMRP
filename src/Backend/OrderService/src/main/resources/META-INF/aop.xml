@@ -1,0 +1,15 @@
+<aspectj>
+  <aspects>
+    <aspect name="kieker.monitoring.probe.aspectj.operationExecution.OperationExecutionAspectFull"/>
+  </aspects>
+  <weaver options="-Xlint:ignore">
+    <include within="smpl.ordering.controllers..*"/>
+    <include within="smpl.ordering.repositories..*"/>
+    <exclude within="smpl.ordering.models..*"/>
+    <exclude within="smpl.ordering.*Configuration*"/>
+    <exclude within="smpl.ordering.*Initializer*"/>
+    <exclude within="smpl.ordering..*$$EnhancerBySpringCGLIB$$*"/>
+    <exclude within="kieker.monitoring..*"/>
+    <exclude within="org.aspectj..*"/>
+  </weaver>
+</aspectj>

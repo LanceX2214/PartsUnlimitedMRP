@@ -1,8 +1,11 @@
 package smpl.ordering;
 
+import kieker.monitoring.core.controller.MonitoringController;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.context.web.SpringBootServletInitializer;
 
+import javax.servlet.ServletContextEvent;
+import javax.servlet.ServletContextListener;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 
@@ -25,6 +28,20 @@ public class OrderingInitializer
 
         if (servletContext != null)
         {
+            servletContext.addListener(new ServletContextListener() {
+                @Override
+                public void contextInitialized(ServletContextEvent sce)
+                {
+                    // no-op
+                }
+
+                @Override
+                public void contextDestroyed(ServletContextEvent sce)
+                {
+                    MonitoringController.getInstance().terminateMonitoring();
+                }
+            });
+
             String path = servletContext.getContextPath();
             if (path != null)
             {

@@ -41,6 +41,9 @@ dependencies {
     compile("org.mongodb:mongo-java-driver:2.12.3")
     compile("org.hibernate:hibernate-core:4.2.0.Final")
     compile("org.apache.httpcomponents:httpclient:4.3.5")
+    compile("net.kieker-monitoring:kieker:1.14")
+    compile("org.aspectj:aspectjrt:1.9.7")
+    runtime("org.aspectj:aspectjweaver:1.9.7")
     testCompile("junit:junit")
 	compile group: 'com.microsoft.azure', name: 'applicationinsights-core', version: '1.+'
 }

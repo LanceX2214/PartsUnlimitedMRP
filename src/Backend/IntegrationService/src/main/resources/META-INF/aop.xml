@@ -1,0 +1,15 @@
+<aspectj>
+  <aspects>
+    <aspect name="kieker.monitoring.probe.aspectj.operationExecution.OperationExecutionAspectFull"/>
+  </aspects>
+  <weaver options="-Xlint:ignore">
+    <include within="integration.services..*"/>
+    <include within="integration.scheduled..*"/>
+    <include within="integration.infrastructure..*"/>
+    <exclude within="integration.models..*"/>
+    <exclude within="integration.Main"/>
+    <exclude within="integration..*$$EnhancerBySpringCGLIB$$*"/>
+    <exclude within="kieker.monitoring..*"/>
+    <exclude within="org.aspectj..*"/>
+  </weaver>
+</aspectj>

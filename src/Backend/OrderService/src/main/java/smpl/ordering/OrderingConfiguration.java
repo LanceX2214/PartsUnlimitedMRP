@@ -5,6 +5,7 @@ import com.microsoft.applicationinsights.TelemetryConfiguration;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoClientOptions;
 import com.mongodb.ServerAddress;
+import kieker.monitoring.core.controller.MonitoringController;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -37,6 +38,13 @@ public class OrderingConfiguration
         SpringApplication app = new SpringApplication(OrderingConfiguration.class);
         app.setLogStartupInfo(false);
         app.run(args);
+        Runtime.getRuntime().addShutdownHook(new Thread() {
+            @Override
+            public void run()
+            {
+                MonitoringController.getInstance().terminateMonitoring();
+            }
+        });
     }
 
     public OrderingConfiguration()
